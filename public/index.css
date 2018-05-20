@@ -24,7 +24,7 @@ body {
 
 .ui {
     color: rgb(241, 232, 232);
-    font-size: 30px;
+    font-size: 20px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
 }
@@ -32,7 +32,7 @@ body {
 #header {
     width: 100%;
     max-width: 500px;
-    height: 42px;
+    height: 66px;
     margin-bottom: 20px;
 }
 
@@ -46,7 +46,7 @@ body {
 
 .half {
     width: 50%;
-    height: 42px;
+    height: 66px;
 }
 
 .left {

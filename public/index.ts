@@ -78,7 +78,6 @@ class Game {
     private _selectedColor: Color;
 
     private _interval;
-    private _timeout;
 
     private readonly _canvas: HTMLCanvasElement = document.getElementById("game") as HTMLCanvasElement;
     private readonly _ctx: CanvasRenderingContext2D = this._canvas.getContext("2d");
@@ -92,6 +91,7 @@ class Game {
     }
 
     private init(level: number) {
+        this.setScores();
         this.setLevel(level);
         this.randomizeTiles();
         this.resize();
@@ -99,6 +99,13 @@ class Game {
         this.draw();
         this.setHeader();
         this.step();
+    }
+
+    private setScores() {
+        const timeScore = document.getElementById("best-time");
+        const moveScore = document.getElementById("best-moves");
+        timeScore.innerHTML = localStorage.getItem("best-time") || "78";
+        moveScore.innerHTML = localStorage.getItem("best-moves") || "128";        
     }
 
     private setLevel = (level: number): void => {
@@ -161,7 +168,15 @@ class Game {
         this.draw();
         // check if completed
         if (this.isCompleted()) {
-            alert("All tiles are infected");
+            clearInterval(this._interval);
+            alert(`All tiles are infected. Time: ${this.time}, Moves: ${this.moves}`);
+            const bestTime = parseInt(localStorage.getItem("best-time") || "78");
+            const bestMoves = parseInt(localStorage.getItem("best-moves") || "128"); 
+            if (this.moves < bestMoves)
+                localStorage.setItem("best-moves", String(this.moves));
+            if (this.time < bestTime) 
+                localStorage.setItem("best-time", String(this.time));
+            this.restart();
         }
     }
 
