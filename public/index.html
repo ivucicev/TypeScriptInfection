@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tiles</title>
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="512x512" href="logo.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2b2b2b">
+    <!-- ios -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- SW -->
+    <script>
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('service-worker.js')
+            .then(() => console.log('service worker installed'))
+            .catch(err => alert(JSON.stringify(err)));
+        }
+      </script>
+    <link href="index.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="game-container" class="game">
+        <div class="container">
+            <div id="header" class="ui">
+                <div class="half left">
+                    Time:
+                    <span id="time" class="time"></span>
+                </div>
+                <div class="half left">
+                    Moves:
+                    <span id="moves" class="moves"></span>
+                </div>
+            </div>
+            <canvas class="canvas" id="game"></canvas>
+            <div class="controls">
+                <div data-color="1" class="button red"></div>
+                <div data-color="2" class="button blue"></div>
+                <div data-color="3" class="button green"></div>
+                <div data-color="4" class="button yellow"></div>
+            </div>
+
+            <div class="controls">
+                <div data-color="5" class="button orange"></div>
+                <div data-color="6" class="button pink"></div>
+                <div data-color="7" class="button brown"></div>
+                <div data-color="8" class="button purple"></div>
+            </div>
+
+            <br>
+            <div class="ui" onclick="window.location.reload()"> Restart </div>
+
+        </div>
+
+    </div>
+    <script src="./index.js"></script>
+</body>
+
+</html>
